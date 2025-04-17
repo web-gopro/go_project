@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package product_service;
+
+option go_package = "genproto/product_service";
+
+message Category {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    string img = 4;
+    string created_at = 5;  
+    string updated_at = 6;
+    string deleted_at = 7;
+}
+
+message CategoryCreateReq {
+    string category_name = 1;
+    string description = 2;
+    string img = 3;
+
+}
+
+message CategoryGetListResp {
+    int32 count = 1;
+    repeated Category category = 2;
+}
+
+message CategoryUpdateReq {
+    string category_name = 1;
+    string description = 2;     
+    string id = 3;
+
+
+}
+
+
+message SubCategory {
+    string id = 1;
+    string category_id =2;
+    string name = 3;
+    string description = 4;
+    string img = 5;
+    string created_at = 6;  
+    string updated_at = 7;
+    string deleted_at = 8;
+}
+
+message SubCategoryCreateReq {
+    string category_name = 1;
+    string description = 2;
+    string img = 3;
+    string category_id =4;
+
+
+}
+
+message SubCategoryGetListResp {
+    int32 count = 1;
+    repeated SubCategory subcategory = 2;
+}
+
+message SubCategoryUpdateReq {
+    string id =1;
+    string category_name = 2;
+    string description = 3;    
+    string category_id = 4;
+
+
+}

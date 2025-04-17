@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package product_service;
+
+option go_package = "genproto/product_service";
+
+import "product_message.proto";
+import "category_message.proto";
+
+
+message PING {
+    string msg = 1;
+}
+message PONG {
+    string msg = 1;
+}
+
+service Ping {
+    rpc SendPing (PING) returns (PONG) {};
+}
+
+service Product_service {
+    rpc CreateProduct (ProductCreateReq) returns (Product);
+    rpc GetProduct (GetByIdReq) returns (Product);
+    rpc GetProducts (GetListReq) returns (ProductGetListResp);
+    rpc UpdateProduct (ProductUpdateReq) returns (Product);
+    rpc DeleteProduct (DeleteReq) returns (Empty);
+
+    rpc CreateProductImg (ProductImage) returns (ProductImage);
+    rpc GetProductImg (GetByIdReq) returns (ProductImage);
+    rpc GetProductImgs (GetListReq) returns (ProductImagesGetListResp);
+    rpc UpdateProductImg (ProductImage) returns (ProductImage);
+    rpc DeleteProductImg (DeleteReq) returns (Empty);
+
+    rpc CreateCategory ( CategoryCreateReq) returns (Category);
+    rpc GetCategory (GetByIdReq) returns (Category);
+    rpc GetCategories (GetListReq) returns (CategoryGetListResp);
+    rpc UpdateCategory (CategoryUpdateReq) returns (Category);
+    rpc DeleteCategory (DeleteReq) returns (Empty);
+
+    rpc SubCreateCategory (SubCategoryCreateReq) returns (SubCategory);
+    rpc GetSubCategory (GetByIdReq) returns (SubCategory);
+    rpc GetSubCategories (GetListReq) returns (SubCategoryGetListResp);
+    rpc UpdateSubCategory (SubCategoryUpdateReq) returns (SubCategory);
+    rpc DeleteSubCategory (DeleteReq) returns (Empty);
+
+}
+
+

@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package product_service;
+
+option go_package = "genproto/product_service";
+
+message ProductImage {
+    string id = 1;
+    string url = 2;
+    bool is_main = 3;
+    string product_id = 4;
+}
+
+message ProductImagesGetListResp {
+    repeated ProductImage productImage =1;
+    int32 count =2;
+}
+
+
+
+
+message Product {
+    string id = 1;
+    string user_id = 2;
+    string name = 3;
+    double price = 4;
+    repeated ProductImage img = 5;
+    uint64 quantity = 6;
+    bool is_active = 7;
+    string description = 8;
+    string created_at = 9;
+    string updated_at = 11;
+    string deleted_at = 12;
+}
+
+message ProductCreateReq {
+    string id = 1;
+    string user_id = 2;
+    string name = 3;
+    double price = 4;
+    repeated ProductImage img = 5;
+    uint64 quantity = 6;
+    bool is_active = 7;
+    string description = 8;
+}
+
+message GetByIdReq {
+    string id = 1;
+}
+
+message DeleteReq {
+    string id = 1;
+}
+
+message GetListReq {
+    int64 limit = 1;
+    int64 page = 2;
+    string serch =3;
+}
+
+message ProductGetListResp {
+    repeated Product products = 1;
+    int64 count = 2;
+}
+
+message ProductUpdateReq {
+    string id = 1;
+    string user_id = 2;
+    string name = 3;
+    double price = 4;
+    repeated ProductImage img = 5;
+    uint64 quantity = 6;
+    bool is_active = 7;
+    string description = 8;
+    string updated_at = 9;
+}
+
+message Empty {
+}
+
